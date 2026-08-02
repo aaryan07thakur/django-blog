@@ -33,7 +33,7 @@ class Blogs(models.Model):
     Category = models.ForeignKey(Category,on_delete=models.CASCADE)
     author= models.ForeignKey(User, on_delete=models.CASCADE)
     featured_image = models. ImageField(upload_to= 'uploads/%y/%m/%d')
-    short_desctiption = models.TextField(max_length=2000)
+    short_description = models.TextField(max_length=2000)
     blog_body = models.TextField (max_length= 3000)
     status= models.CharField( max_length=50, choices= STATUS_CHOICES, default="Draft")
     is_featured = models.BooleanField(default=False)
