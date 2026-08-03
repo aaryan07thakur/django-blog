@@ -20,10 +20,12 @@ from . import views
 from django.conf.urls.static import static  #django ko static function layau x eg: css,js,image file haru show django le route chaine x
                                             #tyo route banau ne helper function ho static()
 from django.conf import settings        #settings.py vitra ko value use garna din x
+from blogs import views as BlogsViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
+    path('<slug:slug>/',BlogsViews.blogs, name='blogs'),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)  #media_url vnae ko browser le use garne URL prefix
                                                 #media_root: Server ma file rakhne real folder
