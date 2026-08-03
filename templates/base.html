@@ -33,7 +33,7 @@
     <!--  category haru laei access gare ko backend bata html ko nav bar ma  -->
           {% for category in categories  %}
 
-          <a class="p-2 text-muted" href="#">{{category.category_name}}</a>
+          <a class="p-2 text-muted" href="{% url  'posts_by_category' category.id %}">{{category.category_name}}</a>
 
           {% endfor %}
 <!-- ====================================================================================================== -->
