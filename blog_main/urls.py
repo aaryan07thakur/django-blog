@@ -27,5 +27,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
     path('<slug:slug>/',BlogsViews.blogs, name='blogs'),
+    #search endpoint
+    path('blogs/search/', BlogsViews.search, name= 'search' ),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)  #media_url vnae ko browser le use garne URL prefix
                                                 #media_root: Server ma file rakhne real folder
