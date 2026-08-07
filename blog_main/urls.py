@@ -26,10 +26,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
-    
-    path('blogs/<slug:slug>/',BlogsViews.blogs, name='blogs'),
-    #search endpoint
+
+    #search endpoint search Url first 
     path('blogs/search/', BlogsViews.search, name= 'search' ),
+
+    #slug url last
+    path('blogs/<slug:slug>/',BlogsViews.blogs, name='blogs'),
+    
+
     path('register/', views.register, name= 'register'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
