@@ -57,7 +57,7 @@ def login(request):
             user= auth.authenticate(request, username= username, password=password)
             if user is not None:
                 auth.login(request,user)
-            return redirect('home')
+            return redirect('dashboard')
 
     #default authentication form by django
     form = AuthenticationForm()
