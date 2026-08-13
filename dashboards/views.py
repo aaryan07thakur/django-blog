@@ -2,6 +2,8 @@ from django.shortcuts import render
 from blogs.models import *
 from django.contrib.auth.decorators import login_required
 
+from dashboards.forms import CategoryForm
+
 # Create your views here.
 
 @login_required(login_url= 'login')  #default decorators
@@ -18,3 +20,11 @@ def dashboard(request):
 
 def categories(request):
     return render(request, 'dashboard/categories.html' )
+
+
+def add_category(request):
+    form = CategoryForm()
+    context ={
+        'form': form,
+    }
+    return render(request,'dashboard/add_category.html', context)
