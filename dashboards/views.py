@@ -13,3 +13,8 @@ def dashboard(request):
         'blogs_count': blogs_count,
     }
     return render(request, 'dashboard/dashboard.html', context= context)
+
+
+
+def categories(request):
+    return render(request, 'dashboard/categories.html' )
