@@ -36,7 +36,8 @@
                             <td>{{cat.created_at}}</td>
                             <td> {{cat.updated_at}} </td>
                             <td>
-                                <a href=""> <i class="fa fa-edit text-seuccess"></i> </a> <!-- edit icon -->
+                                <!-- edit button laie clicakable bana ko by using this{% url 'edit_category' cat.id %} -->
+                                <a href=" {% url 'edit_category' cat.id %} "> <i class="fa fa-edit text-seuccess"></i> </a> <!-- edit icon -->
                                 &nbsp;
                                 <a href=""> <i class="fa fa-trash text-danger "></i> </a>  <!-- delete icon -->
                             

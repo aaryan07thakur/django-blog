@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}  <!-- loaded crispy form -->
+
+ <div class="row">
+
+    <!-- left side bar -->
+    <!-- load the sidebar here -->
+
+    {% include 'dashboard/sidebar.html' %}
+
+
+
+     <!-- right side bar -->
+     <div class="col-md-9">
+        <h2>Edit Category </h2>
+
+        <form action="{% url 'edit_category' category.id  %} " method="POST" style="width: 500px;" >
+            {% csrf_token %}
+
+            {{ form | crispy }} <!-- crispy form -->
+
+            <button type="submit" class="btn btn-warning" >Submit</button>
+        </form>
+        <br>
+       
+     </div>
+
+
+</div>
+
+
+
+{% endblock %}
