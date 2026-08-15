@@ -11,5 +11,6 @@ urlpatterns = [
 
     #blog post urls path
     path('posts/', views.posts, name='posts'),
+    path('posts/add/', views.add_post, name='add_post'),
 
 ]
