@@ -3,6 +3,8 @@ from blogs.models import *
 from django.contrib.auth.decorators import login_required
 
 from dashboards.forms import BlogPostForm, CategoryForm
+from django.template.defaultfilters import slugify  # yo django ko built-in function ho yes le normal title laie url-friendly slug ma convert gar x 
+
 
 # Create your views here. 
 
@@ -81,6 +83,24 @@ def posts(request):
 
 
 def add_post(request):
+    if request.method =='POST':
+         #request.files le uploaded file laie form ma pathu x and request.Post le test laie form ma pathau x 
+        form = BlogPostForm(request.POST, request.FILES)
+
+        if form.is_valid():
+#yes le object banau x but database ma save hudai n. post ma temprorily save hun x. yesto garnu ko resion author form bata fix
+#va ko hudai n yati bela samma, author mannualy save hun x user jun ma login hun x taie author ho vane r save hun x
+            post = form.save(commit=False)   
+            post.author = request.user
+#post.save() database ma save hun x aba and post id generae gar x then  post.id slug banau n  kam lag x
+            post.save()
+
+            title = form.cleaned_data['title'] #title nikal x 
+
+#title ma slug generate gar x then post id pani last am concatinate gar x unique huna ko lagie 
+            post.slug = slugify(title) + '-'+str(post.id)
+            post.save() # you save le database ma update gar x with unique slug 
+            return redirect('posts')
     form= BlogPostForm()
     context={
         'form':form
