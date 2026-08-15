@@ -4,7 +4,9 @@ from django.contrib.auth.decorators import login_required
 
 from dashboards.forms import CategoryForm
 
-# Create your views here.
+# Create your views here. 
+
+#=========================dashboard category =====================================
 
 @login_required(login_url= 'login')  #default decorators
 def dashboard(request):
@@ -64,3 +66,16 @@ def delete_category(request, pk):
         category.delete()
 
     return redirect('categories')
+
+#=================================================================================================
+
+#=================== Blog Post ====================================================================
+
+def posts(request):
+    posts= Blogs.objects.all()
+    context={
+        'posts': posts,
+    }
+    return render(request, 'dashboard/posts.html', context)
+
+

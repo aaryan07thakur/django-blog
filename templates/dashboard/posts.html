@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- left side bar -->
+ <!-- load the sidebar here -->
+ <div class="row">
+
+    <!-- left side bar -->
+    <!-- load the sidebar here -->
+
+    {% include 'dashboard/sidebar.html' %}
+
+
+
+     <!-- right side bar -->
+     <div class="col-md-9">
+        <h2>All Posts</h2>
+
+        <!-- Add new category laie clicakable banu n {% url 'add_category' %} gare ko  -->
+        <a href="{% url 'add_category' %}" class="btn btn-dark text-light float-right mb-2"> Add New post</a>       
+        <table class="table table-hover add_categproed">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Category </th>
+                    <th>author</th>
+                    <th> status</th>
+                    <th> Featured</th>
+                    <th>Action</th>
+                </tr>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                    <tr>
+                        <th> {{ forloop.counter}} </th>
+                            <td>{{post.title}} </td>
+                            <td>{{post.Category}}</td>
+                            <td> {{post.author}} </td>
+                            <td> {{post.status}} </td>
+                            <td> {{post.is_featured}} </td>
+                            <td>
+                                
+                                <a href=" "> <i class="fa fa-edit text-seuccess"></i> </a> <!-- edit icon -->
+                                &nbsp;
+                                <!-- <form action=""
+                                    method="POST"
+                                    style="display:inline;"
+                                    onsubmit="return confirm('Delete this Post?');">
+                                    {% csrf_token %}
+                                    <button type="submit" style="border:none;background:none;padding:0;">
+                                        <i class="fa fa-trash text-danger"></i>
+                                    </button>
+                                </form> -->
+                                                        
+
+                            </td>
+                          
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+
+     </div>
+
+
+</div>
+
+
+{% endblock %}
