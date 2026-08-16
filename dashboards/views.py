@@ -136,4 +136,12 @@ def edit_post(request, pk):
 
 
 
+def delete_post(request,pk):
+    post = get_object_or_404(Blogs,pk=pk)
+    if request.method == 'POST':
+        post.delete()
+
+    return redirect ('posts')
+
+
 

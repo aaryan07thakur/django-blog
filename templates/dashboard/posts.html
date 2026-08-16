@@ -44,7 +44,7 @@
                                 
                                 <a href=" {% url 'edit_post' post.id %} "> <i class="fa fa-edit text-seuccess"></i> </a> <!-- edit icon -->
                                 &nbsp;
-                                 <form action=""
+                                 <form action=" {% url 'delete_post' post.id %}  "
                                     method="POST"
                                     style="display:inline;"
                                     onsubmit="return confirm('Delete this Post?');">
