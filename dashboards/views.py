@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from blogs.models import *
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 from dashboards.forms import AddUserForm, BlogPostForm, CategoryForm
 from django.template.defaultfilters import slugify  # yo django ko built-in function ho yes le normal title laie url-friendly slug ma convert gar x 
@@ -148,6 +148,7 @@ def delete_post(request,pk):
 
 #=====================Users==============================================
 
+@permission_required('auth.view_user') #login user laie permission vayo vane matrai access garna mil x urls 
 def users(request):
     users = User.objects.all()
     context={
@@ -157,6 +158,8 @@ def users(request):
 
 
 
+
+@permission_required('auth.add_user')
 def add_user(request):
     if request.method == 'POST':
         form = AddUserForm(request.POST)

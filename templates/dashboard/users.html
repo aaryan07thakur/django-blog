@@ -14,6 +14,8 @@
 
      <!-- right side bar -->
      <div class="col-md-9">
+        <!-- current user sanga permission x vane patrai show garne  -->
+        {% if perms.auth.view_user %}
         <h2>All Users </h2>
 
         <!-- Add new post laie clicakable banu n {% url 'add_post' %} gare ko  -->
@@ -64,6 +66,9 @@
                 
             </tbody>
         </table>
+        {% else %}
+        <h5>you do not have persmission to view this page </h5>
+        {% endif %}
 
      </div>
 
