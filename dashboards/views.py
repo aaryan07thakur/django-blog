@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from dashboards.forms import BlogPostForm, CategoryForm
 from django.template.defaultfilters import slugify  # yo django ko built-in function ho yes le normal title laie url-friendly slug ma convert gar x 
+from django.contrib.auth.models import User
 
 
 # Create your views here. 
@@ -143,5 +144,15 @@ def delete_post(request,pk):
 
     return redirect ('posts')
 
+
+
+#=====================Users==============================================
+
+def users(request):
+    users = User.objects.all()
+    context={
+        'users':users
+    }
+    return render(request, 'dashboard/users.html', context)
 
 
