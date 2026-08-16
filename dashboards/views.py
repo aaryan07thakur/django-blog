@@ -107,3 +107,33 @@ def add_post(request):
     }
     return render (request, 'dashboard/add_post.html',context)
 
+
+
+def edit_post(request, pk):
+    #url bata aayeko primary key(pk) ko baisi ma post khoj x
+    post= get_object_or_404(Blogs, pk=pk)
+
+   #post request ho vane updated data receive garne
+    if request.method == 'POST':
+        #user le form bata patha ko update data existing post ma rakh x (instance=post ) ko help le
+        form = BlogPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post=form.save() #exiting post update gar x 
+            title= form.cleaned_data['title'] #title line pani form bata update gar x
+            #update title x vnae slug create gar x  
+            post.slug= slugify(title) + '-'+str(post.id)
+            post.save() #datebase ma update gar x
+
+            return redirect('posts') #then post page ma lag x
+    else:
+        form = BlogPostForm(instance=post) #get request x vane existing post ko data form ma show gar x 
+    context={
+        'post': post,
+        'form': form,
+    }
+    return render (request, 'dashboard/edit_post.html', context)
+
+
+
+
+
