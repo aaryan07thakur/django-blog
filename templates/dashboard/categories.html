@@ -37,7 +37,7 @@
                             <td> {{cat.updated_at}} </td>
                             <td>
                                 <!-- edit button laie clicakable bana ko by using this{% url 'edit_category' cat.id %} -->
-                                <a href=" {% url 'edit_category' cat.id %} "> <i class="fa fa-edit text-seuccess"></i> </a> <!-- edit icon -->
+                                <a href=" {% url 'edit_category' cat.id %} "> <i class="fa fa-edit text-primary"></i> </a> <!-- edit icon -->
                                 &nbsp;
                                  <!-- delete button laie clicakable bana ko by using this{% url 'delete_category' cat.id %} -->
                                 <form action="{% url 'delete_category' cat.id %}"

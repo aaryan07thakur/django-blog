@@ -39,10 +39,10 @@
                             <td>{{post.Category}}</td>
                             <td> {{post.author}} </td>
                             <td> {{post.status}} </td>
-                            <td> {{post.is_featured}} </td>
+                            <td> {% if post.is_featured %} <i class="fa fa-check text-success"></i> {% else %} <i class="fa fa-times text-danger"></i> {% endif %} </td>
                             <td>
                                 
-                                <a href=" {% url 'edit_post' post.id %} "> <i class="fa fa-edit text-seuccess"></i> </a> <!-- edit icon -->
+                                <a href=" {% url 'edit_post' post.id %} "> <i class="fa fa-edit text-primary"></i> </a> <!-- edit icon -->
                                 &nbsp;
                                  <form action=" {% url 'delete_post' post.id %}  "
                                     method="POST"
