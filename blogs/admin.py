@@ -18,3 +18,4 @@ class BlogAdmin(admin.ModelAdmin):  #slug auto generate gar x according to title
 
 admin.site.register(Category)
 admin.site.register(Blogs, BlogAdmin)
+admin.site.register(Comment)

@@ -24,7 +24,7 @@
                     <p class="fs-5 mb-4">{{ single_blog.short_description }}</p>
                     <p class="fs-5 mb-4">{{ single_blog.blog_body }}</p>
 
-                    <!-- Comments -->
+                    <!-- ============================= Comments ======================================= -->
                     <h4>Comments ({{ comment_count }})</h4>
                     {% if comments %}
                         {% for comment in comments %}
@@ -47,7 +47,7 @@
                         <form action="" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <textarea name="comment" class="form-control" placeholder="Write your comment"></textarea>
+                                <textarea name="comment" class="form-control" placeholder="Write your comment here"></textarea>
                                 <input type="submit" value="Submit" class="btn btn-primary mt-2">
                             </div>
 
