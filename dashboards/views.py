@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from blogs.models import *
 from django.contrib.auth.decorators import login_required, permission_required
 
-from dashboards.forms import AddUserForm, BlogPostForm, CategoryForm
+from dashboards.forms import *
 from django.template.defaultfilters import slugify  # yo django ko built-in function ho yes le normal title laie url-friendly slug ma convert gar x 
 from django.contrib.auth.models import User
 
@@ -178,7 +178,12 @@ def add_user(request):
 
 def edit_user(request,pk):
     user= get_object_or_404(User, pk=pk)
-    form = AddUserForm(instance=user)
+    if request.method == 'POST':
+        form = EditUserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('users')
+    form = EditUserForm(instance=user)
     context={
         'form': form
     }
