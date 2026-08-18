@@ -34,7 +34,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('register')
+            return redirect('login')
         else:
             print(form.errors)
     else:
@@ -57,7 +57,7 @@ def login(request):
             user= auth.authenticate(request, username= username, password=password)
             if user is not None:
                 auth.login(request,user)
-            return redirect('dashboard')
+            return redirect('home')
 
     #default authentication form by django
     form = AuthenticationForm()
