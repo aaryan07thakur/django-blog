@@ -190,3 +190,11 @@ def edit_user(request,pk):
     return render(request, 'dashboard/edit_user.html', context)
 
 
+def delete_user(request,pk):
+    #take user object
+    user= get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        user.delete()
+    return redirect('users')
+
+

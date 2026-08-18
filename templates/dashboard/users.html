@@ -48,7 +48,7 @@
                                 
                                 <a href=" {% url 'edit_user' user.id %} "> <i class="fa fa-edit text-primary"></i> </a> <!-- edit icon -->
                                 &nbsp;
-                                 <form action=" "
+                                 <form action=" {% url 'delete_user' user.id %} "
                                     method="POST"
                                     style="display:inline;"
                                     onsubmit="return confirm('Delete this User?');">
