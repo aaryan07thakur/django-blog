@@ -46,12 +46,12 @@
                             <td> {{user.is_superuser}} </td>
                             <td>
                                 
-                                <a href=" "> <i class="fa fa-edit text-primary"></i> </a> <!-- edit icon -->
+                                <a href=" {% url 'edit_user' user.id %} "> <i class="fa fa-edit text-primary"></i> </a> <!-- edit icon -->
                                 &nbsp;
                                  <form action=" "
                                     method="POST"
                                     style="display:inline;"
-                                    onsubmit="return confirm('Delete this Post?');">
+                                    onsubmit="return confirm('Delete this User?');">
                                     {% csrf_token %}
                                     <button type="submit" style="border:none;background:none;padding:0;">
                                         <i class="fa fa-trash text-danger"></i>

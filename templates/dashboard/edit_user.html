@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}  <!-- loaded crispy form -->
+
+ <div class="row">
+
+    <!-- left side bar -->
+    <!-- load the sidebar here -->
+
+    {% include 'dashboard/sidebar.html' %}
+
+
+
+     <!-- right side bar -->
+     <div class="col-md-9">
+        <!-- current user sanga permission x vane patrai show garne  -->
+        {% if perms.auth.add_user %}
+        <h2>Edit User </h2>
+
+        <form action=" " method="POST" >
+            {% csrf_token %}
+
+            {{ form | crispy }} <!-- crispy form -->
+
+            <button type="submit" class="btn btn-warning" >Submit</button>
+        </form>
+        <br>
+        {% else %}
+        <h5>you do not have persmission to add  users </h5>
+      {% endif %}
+     </div>
+
+
+</div>
+
+
+
+{% endblock %}
